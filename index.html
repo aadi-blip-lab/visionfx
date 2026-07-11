@@ -1,19 +1,90 @@
-export default function exposure(imageData, effects) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionFX - Professional AI Film & Motion Studio</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Vision<span>FX</span></div>
+            <nav>
+                <a href="editor.html">Editor</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <a class="btn-small" href="editor.html">Get Started</a>
+            </nav>
+        </div>
+    </header>
 
-    const value = effects.exposure;
+    <section class="hero">
+        <div class="container">
+            <h1>Professional AI Film & Motion Studio</h1>
+            <p>Create stunning visual effects with intuitive controls. Professional-grade tools, accessible to everyone.</p>
+            <a href="editor.html" class="primary">Start Editing Free</a>
+        </div>
+    </section>
 
-    if (value === 0) return;
+    <section class="features">
+        <div class="container">
+            <h2>Powerful Features</h2>
+            <div class="grid features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Professional Effects</h3>
+                    <p>Exposure, brightness, contrast, saturation, and more. All non-destructive.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Real-time preview. GPU-accelerated processing for instant feedback.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <h3>Video Support</h3>
+                    <p>Edit images and videos with the same powerful effects.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Presets</h3>
+                    <p>One-click presets: Fuji, Kodak, Noir, Vintage, and more. Fully customizable.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Works on desktop, tablet, and mobile. Edit anywhere, anytime.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>100% Privacy</h3>
+                    <p>All processing happens in your browser. No files uploaded to servers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    const data = imageData.data;
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Create?</h2>
+            <p>Start with our free plan. Upgrade anytime for premium exports.</p>
+            <a href="editor.html" class="primary">Open Editor</a>
+        </div>
+    </section>
 
-    const factor = value * 2;
-
-    for (let i = 0; i < data.length; i += 4) {
-
-        data[i] += factor;
-        data[i + 1] += factor;
-        data[i + 2] += factor;
-
-    }
-
-}
+    <footer>
+        <div class="container footer">
+            <div>
+                <h3>VisionFX</h3>
+                <p>Professional AI Film & Motion Studio</p>
+            </div>
+            <div>
+                <p>&copy; 2026 VisionFX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

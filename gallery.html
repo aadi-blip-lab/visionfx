@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - VisionFX</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .gallery-section { padding: 100px 0; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--card);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: #6ee7ff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Vision<span>FX</span></div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="editor.html">Editor</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <a class="btn-small" href="editor.html">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="gallery-section">
+        <div class="container">
+            <h1>Gallery</h1>
+            <p style="margin-bottom: 60px; max-width: 600px;">Showcase your creations. Edit with VisionFX and share your work with the world.</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">📷</div>
+                <div class="gallery-item">🎬</div>
+                <div class="gallery-item">✨</div>
+                <div class="gallery-item">🌈</div>
+                <div class="gallery-item">🎥</div>
+                <div class="gallery-item">🎨</div>
+            </div>
+
+            <div style="text-align: center; margin-top: 80px;">
+                <h2>Start Creating</h2>
+                <p>Edit your images and videos with VisionFX</p>
+                <a href="editor.html" class="primary" style="margin-top: 24px;">Open Editor</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer">
+            <div>
+                <h3>VisionFX</h3>
+                <p>Professional AI Film & Motion Studio</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
