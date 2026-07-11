@@ -1,139 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+export default function exposure(imageData, effects) {
 
-<head>
+    const value = effects.exposure;
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    if (value === 0) return;
 
-<title>VisionFX</title>
+    const data = imageData.data;
 
-<link rel="stylesheet" href="css/main.css">
+    const factor = value * 2;
 
-</head>
+    for (let i = 0; i < data.length; i += 4) {
 
-<body>
+        data[i] += factor;
+        data[i + 1] += factor;
+        data[i + 2] += factor;
 
-<header>
+    }
 
-<div class="logo">
-VisionFX
-</div>
-
-<nav>
-
-<a href="#">Home</a>
-
-<a href="#">Pricing</a>
-
-<a href="#">About</a>
-
-<a href="#">Login</a>
-
-<a class="pro" href="#">
-Go Pro
-</a>
-
-</nav>
-
-</header>
-
-<section class="hero">
-
-<h1>
-
-Professional AI Film & Motion Effects
-
-</h1>
-
-<p>
-
-Upload any image or video.
-
-Apply cinematic effects instantly.
-
-No software.
-
-No downloads.
-
-</p>
-
-<a class="uploadBtn" href="editor.html">
-
-Start Editing
-
-</a>
-
-</section>
-
-<section class="cards">
-
-<div class="card">
-
-<h2>🎞 Film Looks</h2>
-
-<p>
-
-Fuji
-
-Kodak
-
-Noir
-
-Vintage
-
-35mm
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h2>📺 Motion FX</h2>
-
-<p>
-
-Bloom
-
-Glow
-
-VHS
-
-CRT
-
-Motion Blur
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h2>🛰 AI HUD</h2>
-
-<p>
-
-Tracking
-
-Boxes
-
-Cyber Scan
-
-TouchDesigner
-
-</p>
-
-</div>
-
-</section>
-
-<footer>
-
-VisionFX © 2026
-
-</footer>
-
-</body>
-
-</html>
+}
