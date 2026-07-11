@@ -1,46 +1,60 @@
-import { setCurrentFile } from "./preview.js";
+import { state } from "./state.js";
+import { render } from "./renderer.js";
 
-const upload = document.getElementById("upload");
-const preview = document.getElementById("previewContainer");
+const upload=document.getElementById("upload");
 
-upload.addEventListener("change", e => {
+const preview=document.getElementById("preview");
 
-    const file = e.target.files[0];
+upload.onchange=e=>{
 
-    if (!file) return;
+const file=e.target.files[0];
 
-    setCurrentFile(file);
+if(!file) return;
 
-    preview.innerHTML = "";
+preview.innerHTML="";
 
-    const url = URL.createObjectURL(file);
+const url=URL.createObjectURL(file);
 
-    if (file.type.startsWith("image")) {
+if(file.type.startsWith("image")){
 
-        const img = document.createElement("img");
+const img=new Image();
 
-        img.src = url;
+img.onload=()=>{
 
-        img.id = "previewImage";
+state.source=img;
 
-        preview.appendChild(img);
+state.type="image";
 
-    }
+state.canvas=document.createElement("canvas");
 
-    else {
+state.ctx=state.canvas.getContext("2d");
 
-        const video = document.createElement("video");
+render();
 
-        video.src = url;
+preview.appendChild(state.canvas);
 
-        video.controls = true;
+};
 
-        video.loop = true;
+img.src=url;
 
-        video.id = "previewVideo";
+}
 
-        preview.appendChild(video);
+else{
 
-    }
+const video=document.createElement("video");
 
-});
+video.src=url;
+
+video.controls=true;
+
+video.loop=true;
+
+video.autoplay=false;
+
+video.style.width="100%";
+
+preview.appendChild(video);
+
+}
+
+}
