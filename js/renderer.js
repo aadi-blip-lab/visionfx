@@ -15,14 +15,22 @@ export function render() {
     const canvas = state.canvas;
     const ctx = state.ctx;
 
+    if (!canvas || !ctx) return;
+
     canvas.width = state.width;
     canvas.height = state.height;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.drawImage(state.source, 0, 0);
+    ctx.drawImage(
+        state.source,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
-    const imageData = ctx.getImageData(
+    let imageData = ctx.getImageData(
         0,
         0,
         canvas.width,
@@ -33,10 +41,6 @@ export function render() {
         effect(imageData, state.effects);
     });
 
-    ctx.putImageData(
-        imageData,
-        0,
-        0
-    );
+    ctx.putImageData(imageData, 0, 0);
 
 }
