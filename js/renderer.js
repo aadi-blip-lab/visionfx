@@ -1,18 +1,42 @@
 import { state } from "./state.js";
 
-export function render(){
+const pipeline = [];
 
-    if(!state.source) return;
+/*
+    Register an effect
+*/
+export function registerEffect(effect) {
+    pipeline.push(effect);
+}
 
-    const canvas=state.canvas;
+/*
+    Main renderer
+*/
+export function render() {
 
-    const ctx=state.ctx;
+    if (!state.source) return;
 
-    canvas.width=state.source.naturalWidth;
-    canvas.height=state.source.naturalHeight;
+    const canvas = state.canvas;
+    const ctx = state.ctx;
 
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+    canvas.width = state.width;
+    canvas.height = state.height;
 
-    ctx.drawImage(state.source,0,0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.drawImage(state.source, 0, 0);
+
+    let imageData = ctx.getImageData(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    pipeline.forEach(effect => {
+        effect(imageData, state.effects);
+    });
+
+    ctx.putImageData(imageData, 0, 0);
 
 }
