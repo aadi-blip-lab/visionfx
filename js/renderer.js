@@ -2,16 +2,12 @@ import { state } from "./state.js";
 
 const pipeline = [];
 
-/*
-    Register an effect
-*/
+// Register an effect
 export function registerEffect(effect) {
     pipeline.push(effect);
 }
 
-/*
-    Main renderer
-*/
+// Main renderer
 export function render() {
 
     if (!state.source) return;
@@ -26,21 +22,21 @@ export function render() {
 
     ctx.drawImage(state.source, 0, 0);
 
-let imageData = ctx.getImageData(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-);
+    const imageData = ctx.getImageData(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
-pipeline.forEach(effect => {
+    pipeline.forEach(effect => {
+        effect(imageData, state.effects);
+    });
 
-    effect(imageData, state.effects);
+    ctx.putImageData(
+        imageData,
+        0,
+        0
+    );
 
-});
-
-ctx.putImageData(
-    imageData,
-    0,
-    0
-);
+}
