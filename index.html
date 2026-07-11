@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,154 +8,132 @@
 
 <title>VisionFX</title>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/main.css">
 
 </head>
 
 <body>
 
-<nav>
+<header>
 
 <div class="logo">
 VisionFX
 </div>
 
-<div class="nav-right">
+<nav>
 
-<button class="login">
-Login
-</button>
+<a href="#">Home</a>
 
-<button class="pro">
+<a href="#">Pricing</a>
+
+<a href="#">About</a>
+
+<a href="#">Login</a>
+
+<a class="pro" href="#">
 Go Pro
-</button>
-
-</div>
+</a>
 
 </nav>
 
+</header>
 
 <section class="hero">
 
 <h1>
 
-Professional AI Film Looks
+Professional AI Film & Motion Effects
 
 </h1>
 
 <p>
 
 Upload any image or video.
-Preview premium cinematic filters instantly.
+
+Apply cinematic effects instantly.
+
+No software.
+
+No downloads.
 
 </p>
 
+<a class="uploadBtn" href="editor.html">
+
+Start Editing
+
+</a>
+
 </section>
 
+<section class="cards">
 
+<div class="card">
 
-<section class="upload-section">
-
-<label class="upload-box" for="upload">
-
-<div class="upload-icon">
-
-⬆
-
-</div>
-
-<h2>
-
-Drop Image or Video
-
-</h2>
+<h2>🎞 Film Looks</h2>
 
 <p>
 
-PNG • JPG • WEBP • MP4 • MOV
+Fuji
+
+Kodak
+
+Noir
+
+Vintage
+
+35mm
 
 </p>
 
-<input
-id="upload"
-type="file"
-accept="image/*,video/*"
-hidden>
+</div>
 
-</label>
+<div class="card">
 
-</section>
+<h2>📺 Motion FX</h2>
 
+<p>
 
+Bloom
 
-<section class="preview">
+Glow
 
-<div id="previewContainer">
-<canvas id="editorCanvas" style="display:none;"></canvas>
+VHS
 
-<div class="placeholder">
+CRT
 
-Nothing uploaded yet
+Motion Blur
+
+</p>
 
 </div>
 
-</div>
+<div class="card">
 
-</section>
+<h2>🛰 AI HUD</h2>
 
+<p>
 
+Tracking
 
-<section class="effects">
+Boxes
 
-<h2>
+Cyber Scan
 
-Effects
+TouchDesigner
 
-</h2>
-
-<div class="effect-grid">
-
-<button>High Contrast</button>
-
-<button>Noir</button>
-
-<button>Fuji</button>
-
-<button>Kodak</button>
-
-<button>Film Grain</button>
-
-<button>Bloom</button>
-
-<button>Glow</button>
-
-<button>Touch Designer</button>
-
-<button>HUD Scan</button>
-
-<button>VHS</button>
+</p>
 
 </div>
 
 </section>
-
-
 
 <footer>
 
-Free Export : 480p
-
-<span>
-
-|
-
-</span>
-
-Pro : 720p • 1080p • 2K
+VisionFX © 2026
 
 </footer>
 
-<script type="module" src="js/app.js"></script>
-  
 </body>
+
 </html>
