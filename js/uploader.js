@@ -4,7 +4,15 @@ import { render } from "./renderer.js";
 const upload = document.getElementById("upload");
 const preview = document.getElementById("preview");
 
-upload.onchange = e => {
+if (!upload) {
+    console.error("Upload input not found");
+}
+
+if (!preview) {
+    console.error("Preview container not found");
+}
+
+upload.addEventListener("change", (e) => {
 
     const file = e.target.files[0];
 
@@ -14,14 +22,14 @@ upload.onchange = e => {
 
     const url = URL.createObjectURL(file);
 
-    if (file.type.startsWith("image")) {
+    // IMAGE
+    if (file.type.startsWith("image/")) {
 
         const img = new Image();
 
         img.onload = () => {
 
             state.source = img;
-
             state.type = "image";
 
             state.width = img.naturalWidth;
@@ -34,25 +42,41 @@ upload.onchange = e => {
 
             preview.appendChild(state.canvas);
 
+            URL.revokeObjectURL(url);
+
+        };
+
+        img.onerror = () => {
+            console.error("Image failed to load.");
         };
 
         img.src = url;
 
+        return;
     }
 
-    else {
+    // VIDEO
+    if (file.type.startsWith("video/")) {
 
         const video = document.createElement("video");
 
         video.src = url;
-
         video.controls = true;
+        video.autoplay = false;
         video.loop = true;
+        video.playsInline = true;
 
         video.style.width = "100%";
+        video.style.height = "100%";
 
         preview.appendChild(video);
 
+        state.source = video;
+        state.type = "video";
+
+        return;
     }
 
-};
+    alert("Unsupported file type.");
+
+});
