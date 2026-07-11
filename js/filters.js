@@ -1,56 +1,92 @@
-const buttons = document.querySelectorAll(".effect-grid button");
+const canvas = document.getElementById("editorCanvas");
+const ctx = canvas.getContext("2d");
 
-buttons.forEach(button => {
+function getImage() {
+    return document.getElementById("previewImage");
+}
 
-    button.addEventListener("click", () => {
+function process(callback) {
 
-        const img = document.getElementById("previewImage");
+    const img = getImage();
 
-        if (!img) return;
+    if (!img) return;
 
-        switch (button.innerText) {
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
 
-            case "High Contrast":
+    ctx.drawImage(img,0,0);
 
-                img.style.filter =
-                    "contrast(2.2) brightness(.95)";
+    const image = ctx.getImageData(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
-                break;
+    callback(image.data);
 
-            case "Noir":
+    ctx.putImageData(image,0,0);
 
-                img.style.filter =
-                    "grayscale(1) contrast(2.5)";
+    img.src = canvas.toDataURL("image/png");
 
-                break;
+}
 
-            case "Bloom":
+document.querySelectorAll(".effect-grid button")
+.forEach(btn=>{
 
-                img.style.filter =
-                    "brightness(1.15) contrast(1.2)";
+btn.onclick=()=>{
 
-                break;
+switch(btn.innerText){
 
-            case "Glow":
+case "High Contrast":
 
-                img.style.filter =
-                    "brightness(1.3) saturate(1.4)";
+process(highContrast);
 
-                break;
+break;
 
-            case "VHS":
+case "Noir":
 
-                img.style.filter =
-                    "contrast(1.3) saturate(.7)";
+process(noir);
 
-                break;
+break;
 
-            default:
+}
 
-                img.style.filter = "";
-
-        }
-
-    });
+};
 
 });
+
+function highContrast(data){
+
+for(let i=0;i<data.length;i+=4){
+
+data[i]=Math.min(255,(data[i]-128)*1.8+128);
+
+data[i+1]=Math.min(255,(data[i+1]-128)*1.8+128);
+
+data[i+2]=Math.min(255,(data[i+2]-128)*1.8+128);
+
+}
+
+}
+
+function noir(data){
+
+for(let i=0;i<data.length;i+=4){
+
+let g=
+0.299*data[i]+
+0.587*data[i+1]+
+0.114*data[i+2];
+
+g=(g-128)*2.3+128;
+
+g=Math.max(0,Math.min(255,g));
+
+data[i]=g;
+data[i+1]=g;
+data[i+2]=g;
+
+}
+
+}
