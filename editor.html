@@ -4,24 +4,59 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>VisionFX Editor</title>
 
-<link rel="stylesheet"
-href="css/editor.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/editor.css">
 
 </head>
 
 <body>
 
-<div class="editor">
+<header>
 
-<div class="left">
+<div class="container">
 
-<label class="upload">
+<div class="logo">
+
+Vision<span>FX</span>
+
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="gallery.html">Gallery</a>
+<a href="pricing.html">Pricing</a>
+<a href="about.html">About</a>
+
+<a class="btn-small" href="#">
+
+Upgrade
+
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<main class="editor-layout">
+
+<!-- LEFT -->
+
+<aside class="left-panel">
+
+<div class="panel-title">
+
+Upload
+
+</div>
+
+<label class="upload-box">
 
 <input
 id="upload"
@@ -29,68 +64,300 @@ type="file"
 accept="image/*,video/*"
 hidden>
 
-Click to Upload
+<div class="upload-icon">
+
+⬆
+
+</div>
+
+<h3>
+
+Upload Media
+
+</h3>
+
+<p>
+
+Images & Videos
+
+</p>
 
 </label>
 
+<div class="tool-group">
+
+<button>
+
+📁 Open
+
+</button>
+
+<button>
+
+🗑 Clear
+
+</button>
+
+<button>
+
+🔄 Reset
+
+</button>
+
+<button>
+
+💾 Save
+
+</button>
+
+</div>
+
+</aside>
+
+<!-- CENTER -->
+
+<section class="editor-preview">
+
+<div class="preview-toolbar">
+
+<button>
+
+Before / After
+
+</button>
+
+<button>
+
+100%
+
+</button>
+
+<button>
+
+Fit
+
+</button>
+
+<button>
+
+Fullscreen
+
+</button>
+
+</div>
+
 <div id="preview">
 
-Waiting for upload...
-
-</div>
-
-</div>
-
-<div class="right">
+<div class="preview-placeholder">
 
 <h2>
 
-Effects
+Drop an image or video
 
 </h2>
 
-<div id="effects">
+<p>
 
-<h2>Adjustments</h2>
+Preview will appear here.
 
-<div class="control">
-<label>Exposure</label>
-<input id="exposure" type="range" min="-100" max="100" value="0">
-<span id="exposureValue">0</span>
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- RIGHT -->
+
+<aside class="right-panel">
+
+<div class="panel-title">
+
+Adjustments
+
 </div>
 
 <div class="control">
-<label>Brightness</label>
-<input id="brightness" type="range" min="-100" max="100" value="0">
-<span id="brightnessValue">0</span>
+
+<label>
+
+Exposure
+
+</label>
+
+<input type="range">
+
 </div>
 
 <div class="control">
-<label>Contrast</label>
-<input id="contrast" type="range" min="-100" max="100" value="0">
-<span id="contrastValue">0</span>
+
+<label>
+
+Brightness
+
+</label>
+
+<input type="range">
+
 </div>
 
 <div class="control">
-<label>Saturation</label>
-<input id="saturation" type="range" min="-100" max="100" value="0">
-<span id="saturationValue">0</span>
+
+<label>
+
+Contrast
+
+</label>
+
+<input type="range">
+
 </div>
 
 <div class="control">
-<label>Grain</label>
-<input id="grain" type="range" min="0" max="100" value="0">
-<span id="grainValue">0</span>
-</div>
+
+<label>
+
+Highlights
+
+</label>
+
+<input type="range">
 
 </div>
 
-</div>
+<div class="control">
+
+<label>
+
+Shadows
+
+</label>
+
+<input type="range">
 
 </div>
 
-<script type="module"
-src="js/editor.js"></script>
+<div class="control">
+
+<label>
+
+Grain
+
+</label>
+
+<input type="range">
+
+</div>
+
+<div class="control">
+
+<label>
+
+Bloom
+
+</label>
+
+<input type="range">
+
+</div>
+
+<div class="control">
+
+<label>
+
+Glow
+
+</label>
+
+<input type="range">
+
+</div>
+
+<div class="control">
+
+<label>
+
+Temperature
+
+</label>
+
+<input type="range">
+
+</div>
+
+<div class="control">
+
+<label>
+
+Tint
+
+</label>
+
+<input type="range">
+
+</div>
+
+<hr>
+
+<div class="panel-title">
+
+Presets
+
+</div>
+
+<div class="preset-grid">
+
+<button>Fuji</button>
+<button>Kodak</button>
+<button>Noir</button>
+<button>Vintage</button>
+<button>TouchDesigner</button>
+<button>Cyber HUD</button>
+<button>VHS</button>
+<button>CRT</button>
+
+</div>
+
+</aside>
+
+</main>
+
+<footer class="editor-footer">
+
+<div>
+
+Free Export
+
+<b>
+
+480p
+
+</b>
+
+</div>
+
+<div>
+
+Pro Export
+
+<b>
+
+720 • 1080 • 2K
+
+</b>
+
+</div>
+
+<button class="primary">
+
+Export
+
+</button>
+
+</footer>
+
+<script src="js/editor.js" type="module"></script>
 
 </body>
 
