@@ -161,3 +161,25 @@ border-top:1px solid #222;
 }
 
 }
+.control{
+margin-bottom:22px;
+}
+
+.control label{
+display:block;
+margin-bottom:8px;
+font-size:14px;
+color:#bbb;
+}
+
+.control input{
+width:100%;
+}
+
+.control span{
+display:block;
+margin-top:6px;
+font-size:13px;
+color:#666;
+text-align:right;
+}
