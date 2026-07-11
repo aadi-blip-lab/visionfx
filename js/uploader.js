@@ -37,27 +37,8 @@ upload.addEventListener("change", (e) => {
 
             state.canvas = document.createElement("canvas");
             state.ctx = state.canvas.getContext("2d");
-
-            // Set canvas size to match the preview container
-            const maxWidth = preview.clientWidth - 70; // Account for padding
-            const maxHeight = preview.clientHeight - 70;
-            
-            const aspectRatio = state.width / state.height;
-            let displayWidth = maxWidth;
-            let displayHeight = maxWidth / aspectRatio;
-            
-            if (displayHeight > maxHeight) {
-                displayHeight = maxHeight;
-                displayWidth = displayHeight * aspectRatio;
-            }
-            
             state.canvas.width = state.width;
             state.canvas.height = state.height;
-            state.canvas.style.maxWidth = displayWidth + "px";
-            state.canvas.style.maxHeight = displayHeight + "px";
-            state.canvas.style.borderRadius = "16px";
-            state.canvas.style.boxShadow = "0 20px 80px rgba(0,0,0,.45)";
-            state.canvas.style.display = "block";
 
             render();
 
@@ -86,10 +67,6 @@ upload.addEventListener("change", (e) => {
         video.autoplay = false;
         video.loop = true;
         video.playsInline = true;
-
-        video.style.maxWidth = "100%";
-        video.style.maxHeight = "100%";
-        video.style.borderRadius = "16px";
 
         preview.appendChild(video);
 

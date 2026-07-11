@@ -208,17 +208,25 @@ justify-content:center;
 
 padding:35px;
 
-overflow:auto;
+overflow:hidden;
+
+position:relative;
 
 }
 
 #preview canvas{
 
-max-width:100%;
+max-width:calc(100% - 70px);
 
-max-height:100%;
+max-height:calc(100% - 70px);
 
-object-fit:contain;
+width:auto;
+
+height:auto;
+
+border-radius:16px;
+
+box-shadow:0 20px 80px rgba(0,0,0,.45);
 
 }
 
@@ -260,9 +268,9 @@ font-size:16px;
 
 #preview img{
 
-max-width:100%;
+max-width:calc(100% - 70px);
 
-max-height:100%;
+max-height:calc(100% - 70px);
 
 border-radius:16px;
 
@@ -272,9 +280,9 @@ box-shadow:0 20px 80px rgba(0,0,0,.45);
 
 #preview video{
 
-max-width:100%;
+max-width:calc(100% - 70px);
 
-max-height:100%;
+max-height:calc(100% - 70px);
 
 border-radius:16px;
 
