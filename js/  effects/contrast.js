@@ -1,31 +1,26 @@
-const canvas=document.getElementById("editorCanvas");
-const ctx=canvas.getContext("2d");
+export default function contrast(imageData, effects){
 
-export function highContrast(){
+    const amount = effects.contrast;
 
-const img=document.getElementById("previewImage");
+    if(amount === 0) return;
 
-if(!img) return;
+    const data = imageData.data;
 
-canvas.width=img.naturalWidth;
-canvas.height=img.naturalHeight;
+    const factor =
+        (259 * (amount + 255)) /
+        (255 * (259 - amount));
 
-ctx.drawImage(img,0,0);
+    for(let i=0;i<data.length;i+=4){
 
-let image=ctx.getImageData(0,0,canvas.width,canvas.height);
+        data[i] =
+            factor * (data[i]-128)+128;
 
-let d=image.data;
+        data[i+1] =
+            factor * (data[i+1]-128)+128;
 
-for(let i=0;i<d.length;i+=4){
+        data[i+2] =
+            factor * (data[i+2]-128)+128;
 
-d[i]=Math.min(255,(d[i]-128)*1.8+128);
-d[i+1]=Math.min(255,(d[i+1]-128)*1.8+128);
-d[i+2]=Math.min(255,(d[i+2]-128)*1.8+128);
-
-}
-
-ctx.putImageData(image,0,0);
-
-img.src=canvas.toDataURL("image/png");
+    }
 
 }
