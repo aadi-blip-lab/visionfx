@@ -26,17 +26,21 @@ export function render() {
 
     ctx.drawImage(state.source, 0, 0);
 
-    let imageData = ctx.getImageData(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
+let imageData = ctx.getImageData(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+);
 
-    pipeline.forEach(effect => {
-        effect(imageData, state.effects);
-    });
+pipeline.forEach(effect => {
 
-    ctx.putImageData(imageData, 0, 0);
+    effect(imageData, state.effects);
 
-}
+});
+
+ctx.putImageData(
+    imageData,
+    0,
+    0
+);
